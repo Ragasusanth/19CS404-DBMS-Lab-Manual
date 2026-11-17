@@ -34,10 +34,28 @@ END;
 - Use an `IF` statement to compare the values.
 - Display the greater number using `DBMS_OUTPUT.PUT_LINE`.
 
-**Expected Output:**  
-Greater number is: 80
 
----
+### program :
+```
+DECLARE
+    a NUMBER := 50;
+    b NUMBER := 80;
+BEGIN
+    IF a > b THEN
+        DBMS_OUTPUT.PUT_LINE('Greater number is: ' || a);
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Greater number is: ' || b);
+    END IF;
+END;
+```
+
+## Expected Output:
+
+
+<img width="373" height="270" alt="image" src="https://github.com/user-attachments/assets/cf419acd-f13a-4176-9bed-3fc88e4c8812" />
+
+
+Greater number is: 80
 
 ## 2. Write a PL/SQL program to Calculate Sum of First N Natural Numbers
 
@@ -47,10 +65,32 @@ Greater number is: 80
 - Use a `WHILE` loop to iterate from 1 to `n`, adding each number to the sum.
 - Display the result using `DBMS_OUTPUT.PUT_LINE`.
 
-**Expected Output:**  
-Sum of first 10 natural numbers is: 55
 
----
+### program :
+```
+DECLARE
+    n NUMBER := 10;
+    i NUMBER := 1;
+    total NUMBER := 0;
+BEGIN
+    WHILE i <= n LOOP
+        total := total + i;
+        i := i + 1;
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE(
+        'Sum of first 10 natural numbers is: ' || total
+    );
+END;
+```
+
+
+## Expected Output:
+
+<img width="485" height="273" alt="image" src="https://github.com/user-attachments/assets/85fdf819-0a51-48a5-91b5-83461266b259" />
+
+
+Sum of first 10 natural numbers is: 55
 
 ## 3. Write a PL/SQL program to generate Fibonacci series
 
@@ -60,11 +100,38 @@ Sum of first 10 natural numbers is: 55
 - Use a loop to generate the next terms using the formula `c = a + b`.
 - Print each term in the series.
 
-**Expected Output:**  
+
+
+### program :
+```
+DECLARE
+    n NUMBER := 7;
+    a NUMBER := 0;
+    b NUMBER := 1;
+    c NUMBER;
+BEGIN
+    DBMS_OUTPUT.PUT('Fibonacci sequence: ');
+
+    DBMS_OUTPUT.PUT(a || ', ' || b);
+
+    FOR i IN 3..n LOOP
+        c := a + b;
+
+        DBMS_OUTPUT.PUT(', ' || c);
+
+        a := b;
+        b := c;
+    END LOOP;
+
+    DBMS_OUTPUT.NEW_LINE;
+END;
+```
+## Expected Output:
+
+<img width="400" height="274" alt="image" src="https://github.com/user-attachments/assets/d076e38f-2a16-4111-9c3d-153762169209" />
+
 n = 7  
 Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
-
----
 
 ## 4. Write a PL/SQL Program to display the number in Reverse Order
 
@@ -73,11 +140,34 @@ Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
 - Use a loop to extract each digit using modulo and reverse the number.
 - Display the reversed number.
 
-**Expected Output:**  
+
+
+### program :
+```
+DECLARE
+    n NUMBER := 1535;
+    rev NUMBER := 0;
+    rem NUMBER;
+BEGIN
+    WHILE n > 0 LOOP
+        rem := MOD(n, 10);
+        rev := rev * 10 + rem;
+        n := TRUNC(n / 10);
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE(
+        'Reversed number is: ' || rev
+    );
+END;
+```
+
+## Expected Output: 
+
+
+<img width="358" height="264" alt="image" src="https://github.com/user-attachments/assets/a61ae44c-ca2b-4832-b4e4-8fd308b735e1" />
+
 n = 1535  
 Reversed number is 5351
-
----
 
 ## 5. Write a PL/SQL program to find the largest of three numbers
 
@@ -86,9 +176,39 @@ Reversed number is 5351
 - Use nested `IF-ELSIF-ELSE` conditions to find the largest among the three.
 - Display the largest number.
 
-**Expected Output:**  
+
+### program :
+```
+DECLARE
+    a NUMBER := 10;
+    b NUMBER := 9;
+    c NUMBER := 15;
+BEGIN
+    IF a >= b AND a >= c THEN
+        DBMS_OUTPUT.PUT_LINE(
+            'Largest of three numbers is: ' || a
+        );
+
+    ELSIF b >= a AND b >= c THEN
+        DBMS_OUTPUT.PUT_LINE(
+            'Largest of three numbers is: ' || b
+        );
+
+    ELSE
+        DBMS_OUTPUT.PUT_LINE(
+            'Largest of three numbers is: ' || c
+        );
+    END IF;
+END;
+```
+
+## Expected Output:
+
+<img width="446" height="263" alt="image" src="https://github.com/user-attachments/assets/fe655b2d-ea48-4100-a03b-7accb5b7ea25" />
+
 a = 10, b = 9, c = 15  
 Largest of three number is 15
+
 
 ## RESULT
 Thus, the PL/SQL programs using variables, conditionals, and loops were executed successfully.
